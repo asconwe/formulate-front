@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import composeNestedStructure from './compose-nested-structure';
 import Controls from './controls/Controls';
 
-class PageBuilder extends React.Component {
+class DraftPageScaffold extends React.Component {
   constructor(props) {
     super(props);
     
@@ -14,15 +14,15 @@ class PageBuilder extends React.Component {
     return (
       <div>
         <h1>{this.props.title}</h1>
-        {this.composeNestedStructure(this.props.structure, [], Controls)}
+        {this.composeNestedStructure(this.props.structure, [], Controls, 'draft')}
       </div>
     )
   }
 }
 
-PageBuilder.propTypes = {
+DraftPageScaffold.propTypes = {
   structure: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
 }
 
-export default PageBuilder
+export default DraftPageScaffold
