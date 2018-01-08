@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import ElementLibrary from './element-library';
 
-function composeNestedStructure(elements, parentLocation = [], Wrap) {
-    return elements.map(({ children, options, type }, index) => {
-        const Element = ElementLibrary[type] || ElementLibrary['Box'];
+function composeNestedStructure(elements, parentLocation = [], Wrap, mode = 'live') {
+    return elements.map(({ children, options, type, id }, index) => {
+        console.log(id, mode)
+        const Element = ElementLibrary(mode, type, id);
         const location = parentLocation.concat([index]);
 
         if (Wrap) {
@@ -20,8 +21,7 @@ function composeNestedStructure(elements, parentLocation = [], Wrap) {
             return (
                 <Wrap key={index}>
                     <Element style={options.style} location={location}>
-                    {location}
-                    {children && this.composeNestedStructure(children, location, Wrap)}
+                    {children && this.composeNestedStructure(children, location, Wrap, mode)}
                     </Element>  
                 </Wrap>
             )
@@ -29,7 +29,7 @@ function composeNestedStructure(elements, parentLocation = [], Wrap) {
             return (
                 <Element style={options.style} location={location} key={index}>
                 {location}
-                {children && this.composeNestedStructure(children, location)}
+                {children && this.composeNestedStructure(children, location, null, mode)}
                 </Element>
             )
         }
