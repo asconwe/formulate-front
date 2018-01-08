@@ -1,0 +1,40 @@
+state:
+------
+
+structure = [
+    {
+        id: 0,
+        children: [
+            {
+                id: 1             
+            }
+        ]
+    }, {
+        id: 2,
+        children: [
+            {
+                id: 3,
+                children: []
+            },
+            {
+                id: 4,
+                children: []
+            }
+        ]
+    }
+]
+
+// Keep content in array for easy access and updates
+structureContent = [
+    {
+        // index zero matches id 0
+        type: 'BOX',
+        options: ...
+    }, {
+        // index one matches id 1, etc...
+        type: 'HEADER',
+        content: 'test 123'
+    }
+    ...
+]
+
