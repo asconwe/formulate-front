@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from './Box';
-import CreateCustomElementContainer from './CustomElementContainer';
+import CreateCustomElementContainer from './container-elements/CustomElementContainer';
 import DraftTextLine from './DraftTextLine';
 import DraftTextArea from './DraftTextArea';
 // import LiveText from './LiveText'
@@ -18,7 +18,7 @@ const elementLibrary = (mode, type, id) => {
     },
     draft:
       {
-        Box,
+        Box: CreateCustomElementContainer(Box, id),
         Header: CreateCustomElementContainer(DraftHeader, id),
         Paragraph: CreateCustomElementContainer(DraftParagraph, id)
       }
