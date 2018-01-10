@@ -7,7 +7,10 @@ const inheritStyles = {
     fontFamily: 'inherit',
     width: '100%',
     background: 'inherit',
-    border: 'solid 1px #ddd'
+    border: 'solid 1px #ddd',
+    margin: 0,
+    padding: 0,
+    resize: 'none'
 }
 
 export default class DraftTextArea extends React.Component {
