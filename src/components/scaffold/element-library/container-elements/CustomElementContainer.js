@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setValueOfElement } from '../../../actions';
+import { setValueOfElement } from '../../../../actions';
 
 function CreateCustomElementContainer(Element, id) {
 
@@ -14,22 +14,28 @@ function CreateCustomElementContainer(Element, id) {
             this.props.setValueOfElement(value, id)
         }
         render() {
+            console.log(this.props.options)
             return (
                 <Element value={this.props.value}
-                    setValue={this.handleSetValue} />
+                    setValue={this.handleSetValue} 
+                    style={this.props.options && this.props.options.style}>
+                    {this.props.children}
+                </Element>
             );
         }
     }
 
     const mapStateToProps = (state) => {
+        const { value, options } = state.elements[id]
         return {
-            id: state.structureContent[id].id,
-            value: state.structureContent[id].value
+            id,
+            value,
+            options,
         }
     };
 
     const mapDispatchToProps = (dispatch) => ({
-        setValueOfElement: (value, id) => dispatch(setValueOfElement(value, id))
+        setValueOfElement: (value, id ) => dispatch(setValueOfElement(value, id))
     })
     return connect(mapStateToProps, mapDispatchToProps)(CustomElementContainer);
 }

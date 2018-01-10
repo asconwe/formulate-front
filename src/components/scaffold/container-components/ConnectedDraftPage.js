@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DraftPageScaffold from './DraftPageScaffold';
+import DraftPageScaffold from '../DraftPageScaffold';
 
 class ConnectedDraftPage extends Component {
     render() {
         return(
-            <DraftPageScaffold structure={this.props.structure} title={this.props.title} />
+            <DraftPageScaffold structure={this.props.structure} elements={this.props.elements} title={this.props.title} />
         );
     }
 }
